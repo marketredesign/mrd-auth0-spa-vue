@@ -1,6 +1,6 @@
 {
   "name": "@marketredesign/auth0-spa-vue",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Vue.js wrapper for auth0-spa-js",
   "main": "dist/index.js",
   "scripts": {
@@ -32,11 +32,15 @@
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.4",
+    "@babel/plugin-transform-async-to-generator": "^7.8.3",
     "@babel/preset-env": "^7.8.4"
   },
   "babel": {
     "presets": [
       "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-transform-async-to-generator"
     ]
   }
 }
