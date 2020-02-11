@@ -6,7 +6,7 @@ Go through this checklist after creating your repository. It should only take a 
 - [ ] Manually go through and edit the rest of the README.
 
 ### Dotfiles
-- [ ] Add a `.gitignore` file.
+- [x] Add a `.gitignore` file.
 
 ### GitHub Settings
 - [ ] Add a short description to the repository.
@@ -28,9 +28,10 @@ Go through this checklist after creating your repository. It should only take a 
 - [ ] [OPTIONAL] Add a codecov.yml
 - [ ] Enable the status checks for travis and codecov.
 
-# Project Title
+# MRD Auth0 SPA Vue.js
 
-One Paragraph of project description goes here
+Vue.js wrapper for [auth0-spa-js](https://github.com/auth0/auth0-spa-js).
+As seen in Auth0's [Vue: Login Tutorial](https://auth0.com/docs/quickstart/spa/vuejs/).
 
 ## Getting Started
 
@@ -88,7 +89,7 @@ Add additional notes about how to deploy this on a live system
 
 ## Authors
 
-* **YOUR NAME HERE** - *Initial work*
+* **Marijn van der Horst** - *Initial work*
 
 See also the list of [contributors](https://github.com/marketredesign/your_project/contributors) who participated in this project.
 
