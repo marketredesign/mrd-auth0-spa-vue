@@ -1,0 +1,42 @@
+{
+  "name": "mrd-auth0-spa-vue",
+  "version": "1.0.0",
+  "description": "Vue.js wrapper for auth0-spa-js",
+  "main": "dist/index.js",
+  "scripts": {
+    "prepublish": "babel src -d dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marketredesign/mrd-auth0-spa-vue.git"
+  },
+  "keywords": [
+    "mrd",
+    "auth0",
+    "spa",
+    "vue",
+    "vuejs",
+    "wrapper"
+  ],
+  "author": "Marijn van der Horst",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marketredesign/mrd-auth0-spa-vue/issues"
+  },
+  "homepage": "https://github.com/marketredesign/mrd-auth0-spa-vue#readme",
+  "dependencies": {
+    "@auth0/auth0-spa-js": "^1.6.3",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  }
+}
