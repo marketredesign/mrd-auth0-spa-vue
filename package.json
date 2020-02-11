@@ -1,5 +1,5 @@
 {
-  "name": "mrd-auth0-spa-vue",
+  "name": "@marketredesign/auth0-spa-vue",
   "version": "1.0.0",
   "description": "Vue.js wrapper for auth0-spa-js",
   "main": "dist/index.js",
