@@ -5,7 +5,7 @@ export const authGuard = (to, from, next) => {
 
     const fn = () => {
         // If the user is authenticated, continue with the route
-        if (authService.isAuthenticated) {
+        if (authService.state.isAuthenticated) {
             return next();
         }
 
@@ -14,12 +14,12 @@ export const authGuard = (to, from, next) => {
     };
 
     // If loading has already finished, check our auth state using `fn()`
-    if (!authService.loading) {
+    if (!authService.state.loading) {
         return fn();
     }
 
     // Watch for the loading property to change before we check isAuthenticated
-    authService.$watch("loading", loading => {
+    authService.storeVM.$watch("loading", loading => {
         if (loading === false) {
             return fn();
         }

@@ -1,4 +1,5 @@
 import createAuth0Client from "@auth0/auth0-spa-js";
+import { authGuard } from "./authGuard";
 
 /** Define a default action to perform after authentication */
 const DEFAULT_REDIRECT_CALLBACK = () =>
@@ -145,3 +146,5 @@ export const Auth0Plugin = {
         Vue.prototype.$auth = useAuth0(Vue, options);
     }
 };
+
+export const authGuard = authGuard;
