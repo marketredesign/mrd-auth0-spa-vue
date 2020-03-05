@@ -1,91 +1,86 @@
-# Checklist REMOVE AFTER CHECKING 
+# MRD Auth0 SPA Vue
 
-Go through this checklist after creating your repository. It should only take a couple of minutes. If you encounter any issues, let someone from IT know.
-
-### README
-- [ ] Manually go through and edit the rest of the README.
-
-### Dotfiles
-- [x] Add a `.gitignore` file.
-
-### GitHub Settings
-- [ ] Add a short description to the repository.
-- [ ] Add a develop branch.
-- [ ] Set develop branch as default branch.
-- [ ] Enable all data services (read-only analysis, dependency graph, security alerts).
-- [ ] Create branch protection rules for master:
-  - [ ] Require pull request review before merging.
-    - [ ] Require 2 reviews. (One for the code and testing (DevOps), and one for semantics)
-    - [ ] Dismiss stale pull request approvals when new commits are pushed.
-  - [ ] Require status checks before merging.
-- [ ] Create branch protection rules for develop:
-  - [ ] Require pull request review before merging.
-    - [ ] Require 2 reviews. (One for the code and testing (DevOps), and one for semantics)
-    - [ ] Dismiss stale pull request approvals when new commits are pushed.
-  - [ ] Require status checks before merging.
-- [ ] Add a .travis.yml file.
-  - [ ] Add the codecov token to env variables.
-- [ ] [OPTIONAL] Add a codecov.yml
-- [ ] Enable the status checks for travis and codecov.
-
-# MRD Auth0 SPA Vue.js
-
-Vue.js wrapper for [auth0-spa-js](https://github.com/auth0/auth0-spa-js).
+Vue wrapper for [auth0-spa-js](https://github.com/auth0/auth0-spa-js).
 As seen in Auth0's [Vue: Login Tutorial](https://auth0.com/docs/quickstart/spa/vuejs/).
+
+## Usage
+1. Make sure an application in the Auth0 dashboard has been created. 
+2. Install this package, using `npm install @marketredesign/auth0-spa-vue`.
+3. Import the `Auth0Plugin` Vue plugin, and optionally the `authGuard` into your application, using 
+`import { Auth0Plugin, authGuard } from "@marketredesign/auth0-spa-vue";`
+4. Register the plugin with Vue:
+```javascript
+Vue.use(Auth0Plugin, {
+  domain: 'The Auth0 login domain',
+  clientId: 'Auth0 client ID for this application',
+  onRedirectCallback: appState => {
+    router.push(
+      appState && appState.targetUrl
+        ? appState.targetUrl
+        : 'default redirect'
+    );
+  }
+});
+```
+
+### Log in to the App
+Example template providing a login button:
+```vue
+<template>
+  <div class="home">
+    <img alt="Vue logo" src="../assets/logo.png" />
+    <HelloWorld msg="Welcome to Your Vue.js App" />
+
+    <!-- Check that the SDK client is not currently loading before accessing is methods -->
+    <div v-if="!$auth.state.loading">
+      <!-- show login when not authenticated -->
+      <button v-if="!$auth.state.isAuthenticated" @click="login">Login</button>
+      <!-- show logout when authenticated -->
+      <button v-if="$auth.state.isAuthenticated" @click="logout">Logout</button>
+    </div>
+  </div>
+</template>
+```
+
+Define the login and logout functions for instance as follows.
+```javascript
+login() {
+  this.$auth.loginWithRedirect();
+}
+
+logout() {
+  this.$auth.logout({
+    returnTo: window.location.origin
+  });
+}
+```
+
+### User profile information
+Once the user authenticates, the SDK extracts the user's profile information and stores it in memory. 
+It can be accessed using `this.$auth.state.user` from inside a Vue component.
+
+### Protecting routes
+Routes can be protected by specifying `beforeEnter: authGuard`.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
+See deployment for notes on how to deploy the project to NPM.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+* NodeJS >= 10
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system.
-
-### Break down into end to end tests
-
-Explain what these tests test and why.
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why.
-
-```
-Give an example
-```
+1. Clone the repository
+2. Execute `npm install`
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+1. Make sure you are logged into NPM using `npm adduser`
+2. Verify the version is correct using `npm version`
+3. Publish the package using `npm publish`
 
 ## Authors
 
