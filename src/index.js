@@ -9,7 +9,7 @@ let instance;
 /** Returns the current instance of the SDK */
 export const getInstance = () => instance;
 
-export { authGuard } from './authGuard';
+export { authGuard, permissionGuard } from './authGuard';
 
 class Auth0VueWrapper {
     constructor(Vue, {
