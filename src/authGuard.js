@@ -1,11 +1,11 @@
 import { getInstance } from "./index";
 
 /**
- * Verifies the user is authenticated and redirects to login page if not.
+ * Verifies the user is authenticated and redirects to login page if not. Exports Vue router guard.
  *
- * @param to
- * @param from
- * @param next
+ * @param to Target route object being navigated to.
+ * @param from Current route being navigated away from.
+ * @param next Function to resolve the hook. See https://router.vuejs.org/guide/advanced/navigation-guards.html
  */
 export const authGuard = (to, from, next) => {
     const authService = getInstance();
@@ -37,6 +37,7 @@ export const authGuard = (to, from, next) => {
  * Verifies the user is authenticated and has the provided permission. If the user is not authenticated, they will
  * be redirected to the login page. If the user doesn't have the provided permission, the route change is not permitted.
  * @param permission
+ * @return Exports function that returns a Vue router guard.
  */
 export const permissionGuard = (permission) => {
     return (to, from, next) => {
