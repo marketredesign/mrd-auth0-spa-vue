@@ -1,6 +1,6 @@
 {
   "name": "@marketredesign/auth0-spa-vue",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Vue.js wrapper for auth0-spa-js",
   "main": "src/index.js",
   "scripts": {
