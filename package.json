@@ -25,6 +25,6 @@
   },
   "homepage": "https://github.com/marketredesign/mrd-auth0-spa-vue#readme",
   "dependencies": {
-    "@auth0/auth0-spa-js": "^1.11.0"
+    "@auth0/auth0-spa-js": "^1.22.2"
   }
 }
